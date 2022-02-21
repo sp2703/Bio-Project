@@ -50,3 +50,8 @@
   margin-bottom: 50px;
   margin-top: 100px;
 }
+
+.modal {
+  max-height: 350px;
+  overflow-y: scroll;
+}
