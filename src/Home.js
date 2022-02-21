@@ -21,6 +21,10 @@ function Home() {
   const [errormessage, seterrormessage] = useState("");
   const [chemicals, setchemicals] = useState([]);
   const [open, setopen] = useState(false);
+  const [first, setfirst] = useState(0);
+  useEffect(() => {
+    setfirst(1);
+  }, []);
 
   const style = {
     position: "absolute",
@@ -35,7 +39,9 @@ function Home() {
   };
 
   useEffect(() => {
-    if (!chemicals.length) {
+    if (!chemicals.length && first == 1) {
+      seterrormessage("");
+      setfirst(1);
       if (type === "SOP") {
         console.log(chemicals.length);
         if (parseInt(value) < 7318 || parseInt(value) > 11067) {
@@ -164,7 +170,7 @@ function Home() {
           }}
           severity="error"
         >
-          This is an error alert — check it out!
+          Invalid Input!
         </Alert>
       )}
 
